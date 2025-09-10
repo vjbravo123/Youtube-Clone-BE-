@@ -7,6 +7,7 @@ import channelRoutes from "./routes/channelRoutes.js";
 import videoRoutes from "./routes/videoRoutes.js";
 import commentRoutes from "./routes/commentRoutes.js";
 import likeRoutes from "./routes/LikeRoutes.js";
+import errorHandler from "./middleware/error.js";
 
 dotenv.config();
 connectDB();
@@ -27,6 +28,9 @@ app.use("/api/likes", likeRoutes);
 app.get("/", (req, res) => {
   res.send("YouTube backend API is running...");
 });
+
+// Error handler
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
 
